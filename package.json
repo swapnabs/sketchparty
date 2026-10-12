@@ -1,0 +1,17 @@
+{
+  "name": "sketchparty",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Real-time multiplayer drawing & guessing game (Node.js + Socket.IO + React)",
+  "workspaces": ["server", "client"],
+  "scripts": {
+    "start": "npm run build -w client && node server/src/index.js",
+    "dev": "concurrently -k \"npm run dev -w server\" \"npm run dev -w client\"",
+    "test": "npm test -w server",
+    "loadtest": "node server/test/loadtest.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  },
+  "engines": { "node": ">=18" }
+}
