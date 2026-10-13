@@ -16,6 +16,8 @@ Then open <http://localhost:3001>. Needs Node 18+.
 
 Alternatively, with Docker: `docker compose up` (same URL).
 
+**Live demo:** https://swapna01.netlify.app/ (join by entering the room code on the home page; full invite links work when run locally).
+
 ### Playing with 3+ players locally
 
 1. Open <http://localhost:3001> in a browser, enter a name and click **Create a room**.
