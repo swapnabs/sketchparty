@@ -1,5 +1,8 @@
-import { io } from 'socket.io-client';
+const serverUrl =
+  import.meta.env.VITE_SERVER_URL ||
+  window.location.origin;
 
-// Same origin in production (the Node server serves the built client);
-// in `npm run dev` Vite proxies /socket.io to the server.
-export const socket = io({ autoConnect: false, transports: ['websocket', 'polling'] });
+export const socket = io(serverUrl, {
+  autoConnect: false,
+  transports: ['websocket', 'polling']
+});
