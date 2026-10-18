@@ -80,6 +80,7 @@ class Room {
     this.history = [];
     this.lastTurn = null;
     this.finalPayload = null;
+    this.seenWords = new Set();   // every word already offered in this room (kept across games): nothing repeats until a tier is used up
     this.chatLog = [];            // recent public messages, replayed to anyone who (re)joins
     this.timers = {};
     this.lastActive = Date.now();
@@ -299,7 +300,7 @@ class Room {
     this.lastTurn = null;
     this.resetCanvas();
     const pool = this.settings.words.length ? this.settings.words : DEFAULT_WORDS;
-    this.choices = this.settings.words.length ? pickChoices(pool, 3) : pickByDifficulty(this.settings.difficulty);
+    this.choices = this.settings.words.length ? pickChoices(pool, 3, this.seenWords) : pickByDifficulty(this.settings.difficulty, this.seenWords);
     this.phase = 'choosing';
     this.phaseEndsAt = Date.now() + LIMITS.CHOOSE_MS;
     this.timers.choose = setTimeout(() => {

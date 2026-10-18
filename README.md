@@ -16,8 +16,6 @@ Then open <http://localhost:3001>. Needs Node 18+.
 
 Alternatively, with Docker: `docker compose up` (same URL).
 
-**Live demo:** https://swapna01.netlify.app/ (join by entering the room code on the home page; full invite links work when run locally).
-
 ### Playing with 3+ players locally
 
 1. Open <http://localhost:3001> in a browser, enter a name and click **Create a room**.
@@ -56,9 +54,10 @@ On a LAN, other devices can join using `http://<your-ip>:3001/r/<ROOM>`.
 - Near-misses show "close!" to the guesser only
 - Mid-round joiners get the canvas as it stands; refresh or drop for up to 30 s and you rejoin with your score
 - If the drawer leaves, the turn is skipped after 8 s and the game moves on
+- Built for phones: players strip above the canvas, finger-sized tools in three rows, touch drawing, 👍/👎 on the canvas, chat right under the canvas with a big full-width Send button that scrolls into view above the keyboard
 - Rate limiting and size limits on chat, strokes and every socket message
 - Pick an avatar from a horizontally scrollable row of 24 animals, or press the 🎲 on the right for a random one; avatars are unique per room
-- Word difficulty (easy / medium / hard) or a custom word list
+- A dictionary of 3,100+ ordinary, drawable words across a wide range (animals, birds, fish, food, drinks, plants, objects, tools, clothing, vehicles, buildings, places, nature, jobs, instruments, sports...) in easy / medium / hard tiers, or the host can supply a custom list. Each room remembers every word it has offered, so nothing repeats for 300+ turns (a 10-round game with 12 players is only 120 turns); a tier only refills once all of its words have been shown
 - 👍 / 👎 buttons on the canvas while drawing (and at turn end), with floating reactions and a chat line
 - Winner podium with crown and confetti, ranks (#1, #2, #3…), points counting up with a floating +N on the scoreboard, and the final ranking revealed one by one from highest to lowest
 - Players who guess correctly turn green (scoreboard and turn-end list). The word is never shown in chat, and stays hidden from everyone except the drawer until the turn ends. Anyone who already guessed chats privately (light green), cannot type the word, and cannot score again. Near-misses show a yellow "is close!" to the guesser only

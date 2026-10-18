@@ -35,8 +35,14 @@ export default function Chat({ messages, players = [], placeholder, disabled }) 
       </div>
       <form onSubmit={send} className="chatform">
         <input value={text} maxLength={100} placeholder={placeholder} disabled={disabled} aria-label="Chat message"
-          onChange={(e) => setText(e.target.value)} />
-        <button className="btn" disabled={disabled || !text.trim()}>Send</button>
+          enterKeyHint="send" autoComplete="off" autoCorrect="off" autoCapitalize="none"
+          onChange={(e) => setText(e.target.value)}
+          onFocus={(e) => {
+            // on phones the keyboard can cover the chat: bring the whole box (input + Send) into view
+            const form = e.target.closest('.chatform');
+            setTimeout(() => form && form.scrollIntoView({ block: 'end', behavior: 'smooth' }), 300);
+          }} />
+        <button type="submit" className="btn primary sendbtn" disabled={disabled || !text.trim()}>Send</button>
       </form>
     </div>
   );
